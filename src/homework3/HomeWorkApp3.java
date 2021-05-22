@@ -1,5 +1,7 @@
 package homework3;
 
+import java.util.Random;
+
 public class HomeWorkApp3 {
 
     public static void main(String[] args) {
@@ -14,6 +16,10 @@ public class HomeWorkApp3 {
         int[] forSumArr2 = {1, 2, 1, 1, 5};
         System.out.println(sumArr(forSumArr2));
         printArray(shiftArray(arr, -2));
+
+        int[] testArray = fillArrayRandomly(50);
+        printArray(testArray);
+        minMaxArr(testArray);
     }
 
     //1. Задать целочисленный массив, состоящий из элементов 0 и 1.
@@ -144,6 +150,7 @@ public class HomeWorkApp3 {
         }
         return arr;
     }
+    // Перегруженный метод для печати в консоль массивов
     public static void printArray(int[] printedArray) {
         for (int i = 0; i < printedArray.length; i++) {
             if (i == printedArray.length - 1) {
@@ -160,5 +167,18 @@ public class HomeWorkApp3 {
                 } else System.out.print(printedArray[i][j] + " ");
             }
         }
+    }
+    // Мини домашнее задание, о котором ты говорил на уроке 3 (довести до ума метод,
+    // возвращающий массив заполненный рандомными числами от -5 до 5)
+    static int[] fillArrayRandomly(int size) {
+        int[] numbers = new int[size];
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = generateRandom(-5 , 5);
+        }
+        return numbers;
+    }
+    static int generateRandom(int min, int max){
+        Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
     }
 }
