@@ -20,6 +20,7 @@ public class HomeWorkApp3 {
         int[] testArray = fillArrayRandomly(50);
         printArray(testArray);
         minMaxArr(testArray);
+        printArray(getArray1(5));
     }
 
     //1. Задать целочисленный массив, состоящий из элементов 0 и 1.
@@ -53,7 +54,6 @@ public class HomeWorkApp3 {
         }
         return bin;
     }
-
 
 
     // 4. Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое), и с помощью цикла(-ов)
@@ -150,6 +150,7 @@ public class HomeWorkApp3 {
         }
         return arr;
     }
+
     // Перегруженный метод для печати в консоль массивов
     public static void printArray(int[] printedArray) {
         for (int i = 0; i < printedArray.length; i++) {
@@ -168,17 +169,33 @@ public class HomeWorkApp3 {
             }
         }
     }
+
     // Мини домашнее задание, о котором ты говорил на уроке 3 (довести до ума метод,
     // возвращающий массив заполненный рандомными числами от -5 до 5)
     static int[] fillArrayRandomly(int size) {
         int[] numbers = new int[size];
         for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = generateRandom(-5 , 5);
+            numbers[i] = generateRandom(-5, 5);
         }
         return numbers;
     }
-    static int generateRandom(int min, int max){
+
+    static int generateRandom(int min, int max) {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
+    }
+
+    public static int[][] getArray1(int size) {
+        int[][] arr = new int[size][];
+        for (int i = 1; i <= size; i++) {
+                arr[i-1] = new int[i];
+            }
+        for (int i = 0; i < arr.length; i++){
+            for (int j = 0; j < arr[i].length; j++){
+                arr[i][j] = arr[i].length - j;
+            }
+        }
+
+        return arr;
     }
 }
