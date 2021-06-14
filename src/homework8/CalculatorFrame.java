@@ -2,8 +2,6 @@ package homework8;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class CalculatorFrame extends JFrame {
 
@@ -19,23 +17,24 @@ public class CalculatorFrame extends JFrame {
 
         setLayout(new BorderLayout());
 
-        add(createTopPanel(),BorderLayout.NORTH);
+        add(createTopPanel(), BorderLayout.NORTH);
 
-        add(createBottomPanel(),BorderLayout.CENTER);
+        add(createBottomPanel(), BorderLayout.CENTER);
 
         setVisible(true);
 
     }
-    private JPanel createTopPanel(){
+
+    private JPanel createTopPanel() {
         JPanel top = new JPanel();
         top.setLayout(new BorderLayout());
         inputArea = new JTextField();
         inputArea.setEditable(false);
-        top.add(inputArea,BorderLayout.CENTER);
+        top.add(inputArea, BorderLayout.CENTER);
         return top;
     }
 
-    private JPanel createBottomPanel(){
+    private JPanel createBottomPanel() {
         JPanel bottom = new JPanel();
         bottom.setLayout(new GridLayout(4, 5));
 
@@ -76,21 +75,24 @@ public class CalculatorFrame extends JFrame {
         JMenu fileMenu = new JMenu("File");
         JMenuItem openItem = new JMenu("Open");
         fileMenu.add(openItem);
-        JMenuItem exitItem = new JMenu("Exit");
+        JMenuItem exitItem = new JMenuItem("Exit");
         fileMenu.add(exitItem);
+        exitItem.addActionListener(e -> System.exit(0));
         menuBar.add(fileMenu);
         setJMenuBar(menuBar);
         return menuBar;
     }
-    private void addCalcSymbol(String calcSym){
-        if((!inputArea.getText().endsWith("+") && !inputArea.getText().endsWith("-") && !inputArea.getText().endsWith("*") && !inputArea.getText().endsWith("/") && !inputArea.getText().equals(""))
-        || (inputArea.getText().equals("") && calcSym.equals("-"))) {
-            inputArea.setText(inputArea.getText()+ calcSym);
-        }
 
+    private void addCalcSymbol(String calcSym) {
+        if ((!inputArea.getText().endsWith("+") && !inputArea.getText().endsWith("-") && !inputArea.getText().endsWith("*") && !inputArea.getText().endsWith("/") && !inputArea.getText().equals(""))
+                || (inputArea.getText().equals("") && calcSym.equals("-"))) {
+            inputArea.setText(inputArea.getText() + calcSym);
+        }
     }
-    private void doSqrt(){
-        if (inputArea.getText().contains("+") || inputArea.getText().contains("-") || inputArea.getText().contains("*") || inputArea.getText().contains("/") || inputArea.getText().equals("")) return;
+
+    private void doSqrt() {
+        if (inputArea.getText().contains("+") || inputArea.getText().contains("-") || inputArea.getText().contains("*") || inputArea.getText().contains("/") || inputArea.getText().equals(""))
+            return;
         inputArea.setText(String.valueOf(Math.sqrt(Double.parseDouble(inputArea.getText()))));
-    };
+    }
 }

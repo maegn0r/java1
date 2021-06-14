@@ -7,9 +7,10 @@ import java.awt.event.ActionListener;
 public class DigitButtonActionListener implements ActionListener {
     private final JTextField inputField;
 
-    public DigitButtonActionListener(JTextField inputField){
+    public DigitButtonActionListener(JTextField inputField) {
         this.inputField = inputField;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton btn = (JButton) e.getSource();
